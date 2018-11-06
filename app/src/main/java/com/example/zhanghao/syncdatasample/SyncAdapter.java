@@ -3,6 +3,7 @@ package com.example.zhanghao.syncdatasample;
 import android.accounts.Account;
 import android.content.AbstractThreadedSyncAdapter;
 import android.content.ContentProviderClient;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SyncResult;
 import android.os.Bundle;
@@ -26,7 +27,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     @Override
     @WorkerThread
     public void onPerformSync(Account account, Bundle bundle, String s, ContentProviderClient contentProviderClient, SyncResult syncResult) {
-        Log.d(TAG, "onPerformSync: --start");
+        Log.d(TAG, "onPerformSync: --start--" + bundle.getBoolean(ContentResolver.SYNC_EXTRAS_MANUAL));
         SystemClock.sleep(20 * 1000);
         Log.d(TAG, "onPerformSync: " + Thread.currentThread());
     }
